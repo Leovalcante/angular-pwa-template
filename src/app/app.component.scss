@@ -1,0 +1,33 @@
+.menu {
+  &__title {
+    font-size: 1.6rem;
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
+  }
+
+  &__last-items {
+    order: 9;
+  }
+
+  &__item {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    padding: 1rem;
+  }
+
+  &--mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+  }
+}
+
+.content {
+  height: 88vh;
+  padding: 0 1rem;
+}

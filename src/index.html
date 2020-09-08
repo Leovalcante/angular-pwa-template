@@ -3,11 +3,32 @@
 <head>
   <meta charset="utf-8">
   <title>Pwa</title>
+  <!-- base url -->
   <base href="/">
+
+  <!-- mobile first viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- icons -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="dark-green">
+  <meta name="apple-mobile-web-app-title" content="PWA">
+  <link rel="apple-touch-icon" href="assets/icons/152.png">
+
+  <!-- manifest -->
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- other meta tag -->
+  <meta name="description" content="Simple PWA test">
+  <meta name="theme-color" content="#07860e">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
+  <noscript>PWA use javascript to work. Please enable JavaScript in order to use PWA</noscript>
 </body>
 </html>

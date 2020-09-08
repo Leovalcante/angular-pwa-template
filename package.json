@@ -2,25 +2,40 @@
   "name": "pwa",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start:web:prod": "npm run build:prod:web && http-server dist/pwa -c-1 -a 0.0.0.0 --proxy http://127.0.0.1:4200 --port 4200",
+    "start:web:prod:local": "npm run build:prod:web:local && http-server dist/pwa -c-1 --port 4200",
+    "build:prod:web": "ng build pwa --prod",
+    "postbuild:prod:web": "npm run build:pwa:web",
+    "build:prod:web:local": "ng build pwa --prod",
+    "postbuild:prod:web:local": "npm run build:pwa:web:local",
+    "build:pwa:web": "rm -f ./dist/pwa/service-worker.js && webpack --config ./webpack.prod.config.js --progress --colors && node ./workbox-build-inject.js",
+    "build:pwa:web:local": "rm -f ./dist/pwa/service-worker.js &&  webpack --config ./webpack.dev.config.js --progress --colors && node ./workbox-build-inject.js"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.0",
+    "@angular/cdk": "^10.2.0",
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
     "@angular/core": "~10.1.0",
     "@angular/forms": "~10.1.0",
+    "@angular/material": "^10.2.0",
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "workbox-background-sync": "5.0.0",
+    "workbox-broadcast-update": "5.0.0",
+    "workbox-cacheable-response": "5.0.0",
+    "workbox-core": "5.0.0",
+    "workbox-expiration": "5.0.0",
+    "workbox-navigation-preload": "5.0.0",
+    "workbox-precaching": "5.0.0",
+    "workbox-routing": "5.0.0",
+    "workbox-strategies": "5.0.0",
+    "workbox-window": "5.0.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -41,6 +56,10 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "ts-loader": "6.2.1",
+    "typescript": "~4.0.2",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10",
+    "workbox-build": "5.0.0"
   }
 }

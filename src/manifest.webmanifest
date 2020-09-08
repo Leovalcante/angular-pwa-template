@@ -1,0 +1,184 @@
+{
+  "name": "pwa",
+  "short_name": "pwa",
+  "theme_color": "#07860e",
+  "background_color": "#f7fff7",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/icons/16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "assets/icons/20.png",
+      "type": "image/png",
+      "sizes": "20x20"
+    },
+    {
+      "src": "assets/icons/29.png",
+      "type": "image/png",
+      "sizes": "29x29"
+    },
+    {
+      "src": "assets/icons/32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "assets/icons/40.png",
+      "type": "image/png",
+      "sizes": "40x40"
+    },
+    {
+      "src": "assets/icons/48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "assets/icons/50.png",
+      "type": "image/png",
+      "sizes": "50x50"
+    },
+    {
+      "src": "assets/icons/55.png",
+      "type": "image/png",
+      "sizes": "55x55"
+    },
+    {
+      "src": "assets/icons/57.png",
+      "type": "image/png",
+      "sizes": "57x57"
+    },
+    {
+      "src": "assets/icons/58.png",
+      "type": "image/png",
+      "sizes": "58x58"
+    },
+    {
+      "src": "assets/icons/60.png",
+      "type": "image/png",
+      "sizes": "60x60"
+    },
+    {
+      "src": "assets/icons/64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "assets/icons/72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "assets/icons/76.png",
+      "type": "image/png",
+      "sizes": "76x76"
+    },
+    {
+      "src": "assets/icons/80.png",
+      "type": "image/png",
+      "sizes": "80x80"
+    },
+    {
+      "src": "assets/icons/87.png",
+      "type": "image/png",
+      "sizes": "87x87"
+    },
+    {
+      "src": "assets/icons/88.png",
+      "type": "image/png",
+      "sizes": "88x88"
+    },
+    {
+      "src": "assets/icons/100.png",
+      "type": "image/png",
+      "sizes": "100x100"
+    },
+    {
+      "src": "assets/icons/114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "assets/icons/120.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "assets/icons/128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "assets/icons/144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "assets/icons/152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "assets/icons/167.png",
+      "type": "image/png",
+      "sizes": "167x167"
+    },
+    {
+      "src": "assets/icons/172.png",
+      "type": "image/png",
+      "sizes": "172x172"
+    },
+    {
+      "src": "assets/icons/180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "assets/icons/196.png",
+      "type": "image/png",
+      "sizes": "196x196",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/216.png",
+      "type": "image/png",
+      "sizes": "216x216"
+    },
+    {
+      "src": "assets/icons/256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "assets/icons/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "assets/icons/1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "How's weather today?",
+      "short_name": "Today",
+      "description": "View weather information for today",
+      "url": "/today?source=pwa",
+      "icons": [{ "src": "assets/icons/196.png", "sizes": "196x196" }]
+    },
+    {
+      "name": "How's weather tomorrow?",
+      "short_name": "Tomorrow",
+      "description": "View weather information for tomorrow",
+      "url": "/tomorrow?source=pwa",
+      "icons": [{ "src": "assets/icons/196.png", "sizes": "196x196" }]
+    }
+  ]
+}
