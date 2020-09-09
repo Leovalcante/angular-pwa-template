@@ -12,3 +12,6 @@ updates:
     rebase-strategy: "disabled"
     pull-request-branch-name:
       separator: "-"
+    assignees:
+      - "Leovalcante"
+    open-pull-requests-limit: 10
