@@ -1,5 +1,7 @@
 module.exports = {
+  // Dist directory
   globDirectory: "dist/pwa/",
+  // Stuff to pre-cache
   globPatterns: ["**/*.{css,eot,html,ico,jpg,js,json,png,svg,ttf,txt,webmanifest,woff,woff2,webm,xml}"],
   globFollow: true, // follow symlinks
   globStrict: true, // fail the build if anything goes wrong while reading the files
@@ -15,6 +17,7 @@ module.exports = {
   // Allows to avoid using cache busting for Angular files because Angular already takes care of that!
   dontCacheBustURLsMatching: new RegExp(".+.[a-f0-9]{20}..+"),
   maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4Mb
+  // sw in dist
   swSrc: "dist/pwa/service-worker.js",
   swDest: "dist/pwa/service-worker.js",
 };

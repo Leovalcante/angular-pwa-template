@@ -11,10 +11,11 @@ import {InstallApplicationComponent} from './components/install-application/inst
 import {WINDOW_PROVIDERS} from './providers/window.provider';
 import {NAVIGATOR_PROVIDERS} from './providers/navigator.provider';
 import {HttpClientModule} from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import {HomeComponent} from './home/home.component';
+import {AboutComponent} from './about/about.component';
+import {ContactComponent} from './contact/contact.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 const initApp = (environmentService: EnvironmentService) => {
   return () => environmentService.isEnvironmentReady().catch(e => console.log('Could not initialize application', e));
@@ -46,6 +47,7 @@ const initApp = (environmentService: EnvironmentService) => {
       deps: [EnvironmentService],
       multi: true,
     },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   entryComponents: [
     NewVersionAvailableComponent,

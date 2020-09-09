@@ -1,7 +1,7 @@
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
-import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
-import {filter, first, map, startWith, tap} from 'rxjs/operators';
+import {BehaviorSubject, fromEvent, Observable} from 'rxjs';
+import {filter, first, tap} from 'rxjs/operators';
 
 import {Workbox} from 'workbox-window';
 import {environment} from '../../environments/environment';
@@ -20,13 +20,6 @@ export class EnvironmentService {
 
   public readonly newVersionAvailable$: Observable<boolean>;
   public readonly applicationUpdateOngoing$: Observable<boolean>;
-  public readonly applicationOnline$: Observable<boolean> = merge(
-    fromEvent(this.window, 'offline'),
-    fromEvent(this.window, 'online'),
-  ).pipe(
-    map(() => this.navigator.onLine),
-    startWith(true),
-  );
   public readonly applicationInstallable$: Observable<boolean>;
   public runningStandAlone = false;
 

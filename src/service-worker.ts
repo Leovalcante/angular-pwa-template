@@ -10,7 +10,7 @@ import {CacheableResponsePlugin} from 'workbox-cacheable-response';
 import {ExpirationPlugin} from 'workbox-expiration';
 import {precacheAndRoute, cleanupOutdatedCaches, createHandlerBoundToURL} from 'workbox-precaching';
 import {registerRoute, NavigationRoute} from 'workbox-routing';
-import {NetworkOnly, StaleWhileRevalidate, CacheFirst} from 'workbox-strategies';
+import {StaleWhileRevalidate, CacheFirst} from 'workbox-strategies';
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -19,6 +19,7 @@ const componentName = 'Service Worker';
 // Enable debug mode during development
 const DEBUG_MODE = location.hostname.endsWith('.local') || location.hostname === 'localhost';
 
+// Useful constants
 const DAY_IN_SECONDS = 24 * 60 * 60;
 const MONTH_IN_SECONDS = DAY_IN_SECONDS * 30;
 const YEAR_IN_SECONDS = DAY_IN_SECONDS * 365;
@@ -97,7 +98,7 @@ registerRoute(
 registerRoute(/\.(?:js|css)$/, new StaleWhileRevalidate());
 
 // Cache images
-// But clean up after a while
+// But clean up after a while (1 month)
 registerRoute(
   /\.(?:png|gif|jpg|jpeg|svg)$/,
   new CacheFirst({
@@ -112,41 +113,36 @@ registerRoute(
   }),
 );
 
-// Anything authentication related MUST be performed online  // todo: check me
-registerRoute(/(https:\/\/)?([^\/\s]+\/)api\/v1\/auth\/.*/, new NetworkOnly());
+// Anything authentication related MUST be performed online
+// registerRoute(/(https:\/\/)?([^\/\s]+\/)api\/v1\/auth\/.*/, new NetworkOnly());
 
-// Database access is only supported while online  // todo: check me
-registerRoute(/(https:\/\/)?([^\/\s]+\/)database\/.*/, new NetworkOnly());
+// Database access is only supported while online
+// registerRoute(/(https:\/\/)?([^\/\s]+\/)database\/.*/, new NetworkOnly());
 
 // -------------------------------------------------------------
 // Messages
 // -------------------------------------------------------------
 self.addEventListener('message', (event: { data: any; type: any; ports: any }) => {
   if (event && event.data && event.data.type) {
-    // return the version of this service worker
-    if ('GET_VERSION' === event.data.type) {
+    if (event.data.type === 'GET_VERSION') {
+      // Return the version of this service worker
       if (DEBUG_MODE) {
         // tslint:disable-next-line:no-console
         console.debug(`${componentName}:: Returning the service worker version: ${SERVICE_WORKER_VERSION}`);
       }
       event.ports[0].postMessage(SERVICE_WORKER_VERSION);
-    }
-
-    // When this message is received, we can skip waiting and become active
-    // (i.e., this version of the service worker becomes active)
-    // Reference about why we wait:
-    //     https://stackoverflow.com/questions/51715127/what-are-the-downsides-to-using-skipwaiting-and-clientsclaim-with-workbox
-    if ('SKIP_WAITING' === event.data.type) {
+    } else if (event.data.type === 'SKIP_WAITING') {
+      // When this message is received, we can skip waiting and become active
+      // (i.e., this version of the service worker becomes active)
+      // Reference about why we wait:
+      //     https://stackoverflow.com/questions/51715127/what-are-the-downsides-to-using-skipwaiting-and-clientsclaim-with-workbox
       if (DEBUG_MODE) {
         // tslint:disable-next-line:no-console
         console.debug(`${componentName}:: Skipping waiting...`);
       }
       self.skipWaiting();
-    }
-
-    // When this message is received, we can take control of the clients with this version
-    // of the service worker
-    if ('CLIENTS_CLAIM' === event.data.type) {
+    } else if (event.data.type === 'CLIENTS_CLAIM') {
+      // When this message is received, we can take control of the clients with this version of the service worker
       if (DEBUG_MODE) {
         // tslint:disable-next-line:no-console
         console.debug(`${componentName}:: Claiming clients and cleaning old caches`);

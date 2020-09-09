@@ -33,6 +33,9 @@ $pwa-theme: mat-light-theme((
 @include angular-material-theme($pwa-theme);
 
 /* You can add global styles to this file, and also import other style files */
+$title-color: #558b2f;
+$bg-light: #f7fff7;
+$spin-wh: 200px;
 
 html, body {
   height: 100%;
@@ -42,4 +45,61 @@ body {
   margin: 0;
   padding: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: $bg-light;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: $title-color;
+    text-align: center;
+  }
+
+  &__spinner {
+    background: $bg-light;
+    display: block;
+    width: $spin-wh;
+    height: $spin-wh;
+  }
+}
+
+
+.pwa-actions {
+  min-width: 60vw;
+  display: flex;
+  align-items: center;
+
+  &__title {
+    margin-left: 2rem;
+    font-weight: bold;
+  }
+
+  &__buttons {
+    margin-left: auto;
+    button {
+      margin-right: 2rem;
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  .pwa-actions {
+    &__title {
+      margin-left: 0;
+    }
+    &__buttons {
+      button {
+        margin-right: 0;
+      }
+    }
+  }
+
 }
